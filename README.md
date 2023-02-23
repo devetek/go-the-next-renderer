@@ -17,6 +17,6 @@ Contract is required to be created between template service and the consumer. De
 Open 3 terminals to running this project:
 
 1. Enter to directory `next-app`, and running nextJS app with `yarn && yarn dev`
-2. After port `3000` up, enter to directory `renderer`, and running nextJS app with `go mod tidy && go run main.go`
+2. After port `3000` up, enter to directory `renderer`, and running golang app with `go mod tidy && go run main.go`
 3. From working directory, executre `make run` to running development environment in docker.
 4. Open `localhost` with normal user agent or test open with custom bot user agent to get response from different service.

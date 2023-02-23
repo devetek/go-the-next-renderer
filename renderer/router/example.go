@@ -11,5 +11,5 @@ func ExampleHandler(w http.ResponseWriter, r *http.Request) {
 		Title:   "Example Page",
 		Message: "Hello from example",
 	}
-	template.Dashboard(w, p)
+	template.Example(w, p)
 }

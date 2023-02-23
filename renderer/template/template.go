@@ -27,7 +27,7 @@ type ExampleParams struct {
 	Message string
 }
 
-func Dashboard(w io.Writer, p ExampleParams) error {
+func Example(w io.Writer, p ExampleParams) error {
 	return example.Execute(w, p)
 }
 

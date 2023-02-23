@@ -1,0 +1,6 @@
+{
+  "id": "{{.ID}}",
+  "username": "{{.Username}}",
+  "fullname": "{{.Fullname}}",
+  "address": "{{.Address}}"
+}

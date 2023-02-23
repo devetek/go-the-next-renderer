@@ -22,8 +22,8 @@ func main() {
 	r.HandleFunc("/_next/{page1}/{page2}/{page3}", router.AssetsHandler)
 	r.HandleFunc("/_next/{page1}/{page2}/{page3}/{page4}", router.AssetsHandler)
 	r.HandleFunc("/_next/{page1}/{page2}/{page3}/{page4}/{page5}", router.AssetsHandler)
+	r.HandleFunc("/example", router.ExampleHandler)
 	r.HandleFunc("/", router.HomeHandler)
-	r.HandleFunc("/dashboard", router.DashboardHandler)
 
 	http.Handle("/", r)
 

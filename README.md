@@ -20,3 +20,7 @@ Open 3 terminals to running this project:
 2. After port `3000` up, enter to directory `renderer`, and running golang app with `go mod tidy && go run main.go`
 3. From working directory, executre `make run` to running development environment in docker.
 4. Open `localhost` with normal user agent or test open with custom bot user agent to get response from different service.
+
+## References
+
+- [Golang Template](https://www.practical-go-lessons.com/chap-32-templates)

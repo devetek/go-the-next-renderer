@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import HTMLReactParser from "html-react-parser";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import fetchData from "../../utils/fetch";
@@ -41,7 +41,7 @@ interface ShopProps extends ResponseShopDetail {
   tConsumer: boolean;
 }
 
-const ShopPage: FC<any> = ({
+const ShopPage: FC<ShopProps> = ({
   tConsumer,
   shop,
   products,
@@ -54,12 +54,13 @@ const ShopPage: FC<any> = ({
       <div>{HTMLReactParser(shop.description)}</div>
       <div>
         <ul>
-          {products &&
+          {tConsumer &&
+            products.map((product: Product) => HTMLReactParser(product.name))}
+          {!tConsumer &&
+            products &&
             !!products.length &&
             products.map((product: Product) => {
-              return tConsumer ? (
-                HTMLReactParser(product.name)
-              ) : (
+              return (
                 <li key={product.id}>
                   <div>
                     <h4>{product.name}</h4>

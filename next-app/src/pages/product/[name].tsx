@@ -41,7 +41,7 @@ interface ProductProps extends ResponseProductDetail {
   tConsumer: boolean;
 }
 
-const ProductPage: FC<any> = ({
+const ProductPage: FC<ProductProps> = ({
   tConsumer,
   product,
   related,
@@ -64,11 +64,12 @@ const ProductPage: FC<any> = ({
       <div>{HTMLReactParser(product.description)}</div>
       <div>
         <ul>
-          {!!related.length &&
+          {tConsumer &&
+            related.map((product: Product) => HTMLReactParser(product.name))}
+          {!tConsumer &&
+            !!related.length &&
             related.map((product: Product) => {
-              return tConsumer ? (
-                HTMLReactParser(product.name)
-              ) : (
+              return (
                 <li key={product.id}>
                   <div>
                     <h4>{product.name}</h4>

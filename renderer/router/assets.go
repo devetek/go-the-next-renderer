@@ -8,9 +8,6 @@ import (
 )
 
 func AssetsHandler(w http.ResponseWriter, r *http.Request) {
-
-	log.Println("r.URL.Path:", r.URL.Path)
-
 	originServerURL, err := url.Parse("http://127.0.0.1:3000")
 	if err != nil {
 		log.Fatal("invalid origin server URL")

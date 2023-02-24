@@ -13,12 +13,12 @@ type TemplateSource struct {
 	Endpoint string `json:"endpoint"`
 }
 
-func New() {
+func New() error {
 	var contracts []TemplateSource
 	contractFile, err := os.Open("installer/contract.json")
 	// Let it down, we don't want has invalid contract file
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	// defer the closing of our contractFile so that we can parse it later on
 	defer contractFile.Close()
@@ -29,9 +29,11 @@ func New() {
 
 	// Generate contract templates
 	for _, contract := range contracts {
+		log.Println("contract: ", contract.Module)
 		contract.Generate()
 	}
 
+	return err
 }
 
 // TODO: get list of template from registered definition

@@ -1,0 +1,12 @@
+{
+  "shop": {
+    "id": "{{.Shop.ID}}",
+    "name": "{{.Shop.Name}}",
+    "description": "{{.Shop.Description}}"
+  },
+  "products": [
+    {
+      "name": "{{range $index, $element := .Products}}\n  <li>\n    <div>\n      <h4>{{ $element.Name}}</h4>\n    </div>\n    <div>{{ $element.Price}}</div>\n    {{ if $element.Discount}}\n    <div>{{$element.Discount}}</div>\n    {{end}}\n  </li>\n{{end}}"
+    }
+  ]
+}

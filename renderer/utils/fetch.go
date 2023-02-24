@@ -11,10 +11,6 @@ type ResponseUser struct {
 	Address  string `json:"address"`
 }
 
-type ResponseTopics struct {
-	Topics []string `json:"topics"`
-}
-
 func Fetcher(url string) (*http.Response, error) {
 	var client = &http.Client{}
 

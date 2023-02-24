@@ -1,0 +1,19 @@
+{
+  "product": {
+    "id": "{{.Product.ID}}",
+    "name": "{{.Product.Name}}",
+    "discount": "{{ if .Product.Discount}}\n  <div>\n    <h3>{{.Product.Discount}}</h3>\n  </div>\n{{end}}",
+    "category": {
+      "id": 1,
+      "name": "Pertanian"
+    },
+    "price": "{{.Product.Price}}",
+    "price_raw": "{{.Product.PriceRaw}}",
+    "description": "{{.Product.Description}}"
+  },
+  "related": [
+    {
+      "name": "{{range $index, $element := .Related}}\n  <li>\n    <div>\n      <h4>{{ $element.Name}}</h4>\n    </div>\n    <div>{{ $element.Price}}</div>\n    {{ if $element.Discount}}\n    <div>{{$element.Discount}}</div>\n    {{end}}\n  </li>\n{{end}}"
+    }
+  ]
+}

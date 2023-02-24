@@ -4,7 +4,11 @@
     "endpoint": "http://localhost:3000"
   },
   {
-    "module": "loop",
-    "endpoint": "http://localhost:3000/loop"
+    "module": "shop",
+    "endpoint": "http://localhost:3000/shop/detail"
+  },
+  {
+    "module": "product-detail",
+    "endpoint": "http://localhost:3000/product/detail"
   }
 ]

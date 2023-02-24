@@ -2,7 +2,6 @@ package router
 
 import (
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 
@@ -40,8 +39,6 @@ func ShopHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
-
-	fmt.Println("data:", data.Shop)
 
 	p := template.ShopDetailParams{
 		Shop:     data.Shop,

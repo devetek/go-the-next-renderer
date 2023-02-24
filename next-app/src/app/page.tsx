@@ -2,13 +2,14 @@ import Image from "next/image";
 import { headers } from "next/headers";
 import { Inter } from "@next/font/google";
 import styles from "./page.module.css";
-import fetchUser from "./../utils/fetch";
+import fetchData from "./../utils/fetch";
 
 const inter = Inter({ subsets: ["latin"] });
 
 async function getData(ua: string | null) {
   const isTemplateConsumer = ua?.includes("wpe-bot-aggregator");
-  const data = await fetchUser(isTemplateConsumer);
+  const pickTemplate = isTemplateConsumer ? "user" : "";
+  const data = await fetchData(pickTemplate);
 
   return data || null;
 }
@@ -17,9 +18,6 @@ export default async function Home() {
   const headersList = headers();
   const userAgent = headersList.get("user-agent");
   const data = await getData(userAgent);
-
-  console.log("data", data);
-  console.log("userAgent", userAgent);
 
   return (
     <main className={styles.main}>

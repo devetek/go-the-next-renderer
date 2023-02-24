@@ -21,7 +21,7 @@ services:
       - poc-lite-atreus
       - poc-lite-atreus-bot
     image: nginx
-    container_name: yabb_nginx
+    container_name: poc-lite-nginx
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf

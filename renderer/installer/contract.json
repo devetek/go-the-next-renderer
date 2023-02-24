@@ -1,0 +1,10 @@
+[
+  {
+    "module": "home",
+    "endpoint": "http://localhost:3000"
+  },
+  {
+    "module": "loop",
+    "endpoint": "http://localhost:3000/loop"
+  }
+]

@@ -14,14 +14,24 @@ var files embed.FS
 var (
 	home    = parse("home.html")
 	example = parse("example.html")
+	loop    = parse("loop.html")
 )
 
-type HomeParams utils.Response
+// Object Page
+type HomeParams utils.ResponseUser
 
 func Home(w io.Writer, p HomeParams) error {
 	return home.Execute(w, p)
 }
 
+// Loop Page
+type LoopParams utils.ResponseTopics
+
+func Loop(w io.Writer, p LoopParams) error {
+	return loop.Execute(w, p)
+}
+
+// Example Page
 type ExampleParams struct {
 	Title   string
 	Message string

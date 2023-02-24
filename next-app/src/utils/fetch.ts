@@ -1,15 +1,19 @@
-import "server-only";
+// import "server-only";
 import axios from 'axios';
-import userMock from './../mockup/user.json'
 
-const fetchUser = async (isMock: boolean = false) => {
-    if (isMock) {
-        return userMock;
+const fetchData = async (mockName: string = "", url?: string) => {
+    if (mockName) {
+        console.log("Fetch to mock:", mockName)
+        // use dynamic import json https://javascript.info/modules-dynamic-imports
+        const object = await import(`./../mockup/${mockName}.json`);
+        return object.default;
     }
+
+    const targetURL = url ? url : 'https://mocki.io/v1/4459ceb7-791b-4948-87e1-db598b805587';
 
     // real fetch when real access
     try {
-        const response = await axios.get('https://mocki.io/v1/4459ceb7-791b-4948-87e1-db598b805587');
+        const response = await axios.get(targetURL);
         return response?.data || null;
     } catch (error) {
         console.error(error);
@@ -17,4 +21,4 @@ const fetchUser = async (isMock: boolean = false) => {
     }
 }
 
-export default fetchUser;
+export default fetchData;

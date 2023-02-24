@@ -6,11 +6,11 @@ So what we do to deal with it, we need to route some traffic where need high res
 
 But how to handle the the View and/or data fetching, where currently running super well in React.js. Or should we create View and data fetching in 2 services now ?.
 
-Based on the story, we create some solution on how we can still do coding UI in mature ecosystem which is React.js but processing for bot request using golang. With no coding view in Golang. We create solution, call `Template as a Service`. Where React.js will become source of truth of View and golang will process bot traffic using template provided by React.js. So we still has consistent UI between bot and user.
+Based on the story, we create some solution on how we can still do coding UI in mature ecosystem which is React.js but processing for bot request using golang. With no coding View in Golang. We create solution, call `Template as a Service`. Where React.js will become source of truth for View and golang will do the rest when traffic coming from bot using template provided by React.js to render the View. So we still has consistent UI between bot and user.
 
 ## How It Works
 
-Contract is required to be created between template service and the consumer. Developer require to create mock data fetching contract which will render when `consumer` request the template. Then the consumer will save the latest template locally and used it to handle real bot traffic.
+Contract is required to be created between template service and the consumer. Developer require to create mock data fetching contract which will render when `consumer` request the template. Then the consumer will save the latest template locally and use it to handle real bot traffic.
 
 ## Development
 

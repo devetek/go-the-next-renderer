@@ -1,6 +1,6 @@
 ## Background Story
 
-Deal with low resource to render complex web UI it's a painful process, especially in React.js server side, since nodeJS single thread by nature. It has many limitation on performance comparing with another languange which support multithreading and multi processing.
+Deal with low resource to render complex web UI it's a painful process, especially in React.js server side, since nodeJS single thread by nature. It has many limitation on performance comparing with another languange which support multithreading and multiprocessing.
 
 So what we do to deal with it, we need to route some traffic where need high resource usage to something more efficience service, such as golang service.
 

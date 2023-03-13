@@ -10,7 +10,7 @@ const RelatedComponent: FC<RelatedProps> = ({
   relateds,
 }: RelatedProps): JSX.Element => {
   return (
-      <div data-tmpl="go:loop">
+      <div data-tmpl="go:.Related:loop">
         <ul>
           {!!relateds.length &&
             relateds.map((product: Product) => {

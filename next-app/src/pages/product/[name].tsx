@@ -2,6 +2,7 @@ import React, { FC, Fragment } from "react";
 import HTMLReactParser from "html-react-parser";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import fetchData from "../../utils/fetch";
+import RelatedComponent from "@/components/Related";
 
 const getLinkAPI = (target: string): string => {
   const apiMap: Record<string, string> = {
@@ -42,47 +43,24 @@ interface ProductProps extends ResponseProductDetail {
 }
 
 const ProductPage: FC<ProductProps> = ({
-  tConsumer,
   product,
   related,
 }: ProductProps): JSX.Element => {
   return (
     <main>
       <div>
-        <h1>{product.name}</h1>
+        <h1 data-tmpl="go:.Name">{product.name}</h1>
       </div>
       <div>
-        <h3>{product.price}</h3>
+        <h3 data-tmpl="go:.Price">{product.price}</h3>
       </div>
-      {tConsumer
-        ? HTMLReactParser(product?.discount || "")
-        : product.discount && (
-            <div>
-              <h3>{product.discount}</h3>
-            </div>
-          )}
-      <div>{HTMLReactParser(product.description)}</div>
-      <div>
-        <ul>
-          {tConsumer &&
-            related.map((product: Product) => HTMLReactParser(product.name))}
-          {!tConsumer &&
-            !!related.length &&
-            related.map((product: Product) => {
-              return (
-                <li key={product.id}>
-                  <div>
-                    <h4>{product.name}</h4>
-                  </div>
-                  <div>{product.price}</div>
-                  {tConsumer
-                    ? HTMLReactParser(product?.discount || "")
-                    : product.discount && <div>{product.discount}</div>}
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+      {product.discount && (
+        <div>
+          <h3 data-tmpl="go:.Discount">{product.discount}</h3>
+        </div>
+      )}
+      <div data-tmpl="go:.Description">{product.description}</div>
+      {!!related.length && <RelatedComponent relateds={related}/>}
     </main>
   );
 };

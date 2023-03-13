@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import HTMLReactParser from "html-react-parser";
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
 import fetchData from "../../utils/fetch";
+import RelatedComponent from "@/components/Related";
 
 const getLinkAPI = (target: string): string => {
   const apiMap: Record<string, string> = {
@@ -42,38 +43,16 @@ interface ShopProps extends ResponseShopDetail {
 }
 
 const ShopPage: FC<ShopProps> = ({
-  tConsumer,
   shop,
   products,
 }: ShopProps): JSX.Element => {
   return (
     <main>
       <div>
-        <h1>{shop.name}</h1>
+        <h1 data-tmpl="go:.Name">{shop.name}</h1>
       </div>
-      <div>{HTMLReactParser(shop.description)}</div>
-      <div>
-        <ul>
-          {tConsumer &&
-            products.map((product: Product) => HTMLReactParser(product.name))}
-          {!tConsumer &&
-            products &&
-            !!products.length &&
-            products.map((product: Product) => {
-              return (
-                <li key={product.id}>
-                  <div>
-                    <h4>{product.name}</h4>
-                  </div>
-                  <div>{product.price}</div>
-                  {tConsumer
-                    ? HTMLReactParser(product?.discount || "")
-                    : product.discount && <div>{product.discount}</div>}
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+      <div data-tmpl="go:.Description">{shop.description}</div>
+      {!!products.length && <RelatedComponent relateds={products}/>}
     </main>
   );
 };

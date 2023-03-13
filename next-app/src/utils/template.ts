@@ -1,6 +1,7 @@
 const templateGenerator = (html: string): string => {
     // lexer / parser
-    return html.replaceAll("Rp. 10.000,-", "{{ .Price }}");
+    return html.replaceAll("Ikan Cuek", "{{ .Price }}");
+    return html
 }
 
 export default templateGenerator;

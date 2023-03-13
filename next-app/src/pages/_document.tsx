@@ -1,5 +1,5 @@
-import templateGenerator from '@/utils/template'
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
+// import templateGenerator from '@/utils/template'
 
 class RendererDocument extends Document {
   static async getInitialProps(
@@ -9,8 +9,8 @@ class RendererDocument extends Document {
 
 
     // Here, we create our template for target engine (Golang / Rust / V-Lang).
-    // Modify HTML with contract parser / lexter
-    initialProps.html =  templateGenerator(initialProps.html)
+    // Modify HTML with contract parser / lexter (we cannot modify initialProps.html) just like this!
+    // initialProps.html =  templateGenerator(initialProps.html)
 
     return initialProps
   }
